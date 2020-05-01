@@ -10,6 +10,7 @@
 
   var passwordLength = parseInt(prompt("What length does the password need to be?"));
   var wantsSpecials = confirm("Would you like to have special characters in your password?");
+  var wantsNumbers = confirm("Would you like to have numbers in your password?")
   var wantsLowers = confirm("Would you like to have lowercase letters in your password?");
   var wantsUppers = confirm("Would you like to have uppercase letters in your password?");
 
@@ -27,15 +28,27 @@
     possibles.push(uppers);
   }
 
+  if (wantsNumbers) {
+    possibles.push(numbers);
+  }
+
   var result = "";
 
-  for (var i = 0; i < passwordLength; i++) {
-    // randomly pick an array from possibles
-    var randomArray = possibles[Math.floor(Math.random() * possibles.length)];
-    // randomly pick a character from the array we picked above
-    var randomChar = randomArray[Math.floor(Math.random() * randomArray.length)];
-    // add the character to the password
-    result += randomChar;
+  // verify that user selected at least one array
+  if (possibles.length > 0) {
+    console.log(possibles);
+    for (var i = 0; i < passwordLength; i++) {
+      console.log(possibles);
+      // randomly pick an array from possibles
+      var randomArray = possibles[Math.floor(Math.random() * possibles.length)];
+      console.log(possibles);
+      // randomly pick a character from the array we picked above
+      var randomChar = randomArray[Math.floor(Math.random() * randomArray.length)];
+      // add the character to the password
+      result += randomChar;
+    }
+  } else {
+    alert("You must select at least one character type. Please try again.");
   }
   // Outputs resulting password to console
   console.log(result);
