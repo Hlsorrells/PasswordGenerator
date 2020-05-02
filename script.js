@@ -12,7 +12,7 @@ function generatePassword() {
   // Create variables for user responses
   var passwordLength = parseInt(prompt("What length does the password need to be? It must be between 8 and 128 characters in length."));
     // Verify password length within parameters
-    if (passwordLength < 9 || passwordLength > 128) {
+    if (passwordLength < 8 || passwordLength > 128) {
       // 
       alert("It must be between 8 and 128 characters in length")
       return
@@ -72,7 +72,6 @@ function writePassword() {
   if (password) {
     passwordText.value = password;
   }
-
 }
 
 // Add event listener to generate button
