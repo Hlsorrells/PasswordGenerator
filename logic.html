@@ -1,56 +1,80 @@
 <script>
   // need logic to guarantee one character of each
   // arrays, math.random, if statements
-  // limit password length between 8 and 128
+  function generatePassword() {
+    var specials = ["!", "@", "#", "$", "%", "^", "\&", "*", "\(", "\)", "'",'"'];
+    var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var lowers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var uppers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-  var specials = ["!", "@", "#", "$", "%", "^", "\&", "*", "\(", "\)"];
-  var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var lowers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  var uppers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-  var passwordLength = parseInt(prompt("What length does the password need to be?"));
-  var wantsSpecials = confirm("Would you like to have special characters in your password?");
-  var wantsNumbers = confirm("Would you like to have numbers in your password?")
-  var wantsLowers = confirm("Would you like to have lowercase letters in your password?");
-  var wantsUppers = confirm("Would you like to have uppercase letters in your password?");
-
-  var possibles = [];
-
-  if (wantsSpecials) {
-    possibles.push(specials);
-  }
-
-  if (wantsLowers) {
-    possibles.push(lowers);
-  }
-
-  if (wantsUppers) {
-    possibles.push(uppers);
-  }
-
-  if (wantsNumbers) {
-    possibles.push(numbers);
-  }
-
-  var result = "";
-
-  // verify that user selected at least one array
-  if (possibles.length > 0) {
-    console.log(possibles);
-    for (var i = 0; i < passwordLength; i++) {
-      console.log(possibles);
-      // randomly pick an array from possibles
-      var randomArray = possibles[Math.floor(Math.random() * possibles.length)];
-      console.log(possibles);
-      // randomly pick a character from the array we picked above
-      var randomChar = randomArray[Math.floor(Math.random() * randomArray.length)];
-      // add the character to the password
-      result += randomChar;
+    var passwordLength = parseInt(prompt("What length does the password need to be? It must be between 8 and 128 characters in length."));
+    // Verify that the length of the password is between 8 and 128.
+    if (passwordLength < 9 || passwordLength > 128) {
+      alert("It must be between 8 and 128 characters in length")
+      return
     }
-  } else {
-    alert("You must select at least one character type. Please try again.");
-  }
-  // Outputs resulting password to console
-  console.log(result);
+    var wantsSpecials = confirm("Would you like to have special characters in your password?");
+    var wantsNumbers = confirm("Would you like to have numbers in your password?")
+    var wantsLowers = confirm("Would you like to have lowercase letters in your password?");
+    var wantsUppers = confirm("Would you like to have uppercase letters in your password?");
 
+    var possibles = [];
+
+    if (wantsSpecials) {
+      possibles.push(specials);
+    }
+
+    if (wantsLowers) {
+      possibles.push(lowers);
+    }
+
+    if (wantsUppers) {
+      possibles.push(uppers);
+    }
+
+    if (wantsNumbers) {
+      possibles.push(numbers);
+    }
+
+    if(possibles.length === 0){
+      alert("You must select at least one character type. Please try again.");
+      return
+    }
+
+    var result = "";
+
+    // Function generatePassword to pass the password
+
+    
+    // verify that user selected at least one array
+    
+      console.log(possibles);
+      console.log(result);
+      for (var i = 0; i < passwordLength; i++) {
+        console.log(possibles);
+        console.log(result);
+        // randomly pick an array from possibles
+        var randomArray = possibles[Math.floor(Math.random() * possibles.length)];
+        console.log(randomArray);
+        console.log(result);
+        // randomly pick a character from the array we picked above
+        var randomChar = randomArray[Math.floor(Math.random() * randomArray.length)];
+        console.log(randomChar)
+        console.log(result)
+        // add the character to the password
+        result += randomChar;
+        console.log(result);
+      }
+     
+    // Outputs resulting password to console
+    //console.log(result);
+    return result
+  }
+
+  var pass = generatePassword()
+  console.log(pass)
+  if (pass !== undefined ) {
+
+    console.log(pass)
+  }
 </script>
