@@ -78,16 +78,16 @@ My next task was to create any needed alerts for failed project parameters. Sinc
   #1 No arrays selected
   After completing the four arrays (specials, numbers, lowers, and upppers) to contain the list of character choices, I then began to apply some additional constraints to the project. I needed it to create an alert for the user if no arrays were selected for the password generator. 
 
-    * **My First Attempt** This was accomplished by wrapping the for loop for the password generator with an if/else statement. I researched how to determine if an array contained any elements and chose to use the .length property to evaluate whether the "possibles" array was greater than 0 before running the for loop else it would generate an alert indicating that the user needs to select a character type to generate a password. I used console.log(possibles) to verify that the function was operating properly.
+    **My First Attempt** This was accomplished by wrapping the for loop for the password generator with an if/else statement. I researched how to determine if an array contained any elements and chose to use the .length property to evaluate whether the "possibles" array was greater than 0 before running the for loop else it would generate an alert indicating that the user needs to select a character type to generate a password. I used console.log(possibles) to verify that the function was operating properly.
 
-    * **Final Version** When I was working with the teaching assistant, he showed me how to use the exclamation mark, or bang, as a logical "not" operator in front of the possibles variable within the if statement. This was a much better approach providing the same result.
+    **Final Version** When I was working with the teaching assistant, he showed me how to use the exclamation mark, or bang, as a logical "not" operator in front of the possibles variable within the if statement. This was a much better approach providing the same result.
 
   #2 Character count outside parameters
   The next step was to create the constraint limiting the length of the password between 8 and 128 characters. Since the user is allowed to enter any number into the prompt, the user's response needed to be validated with a logical test. Using an if statement, passwordLength could be compared to the set parameters of less than 8 or more than 128 which would only pass the alert when either condition was true.
 
-    * **My First Attempt** My original approach was to create a single parameter as (8 < passwordLength < 128) but this does not work in JS. I had to seek help from the teaching assistant.
+    **My First Attempt** My original approach was to create a single parameter as (8 < passwordLength < 128) but this does not work in JS. I had to seek help from the teaching assistant.
 
-    * **Final Version** The teaching assistant showed me that I had to reconstruct the logical argument into two parameters combined with an or operator like so (passwordLength < 8 || passwordLength > 128). This created a return of true if the passwordLength failed project parameters which prompted the alert and the return escape from the function.
+    **Final Version** The teaching assistant showed me that I had to reconstruct the logical argument into two parameters combined with an or operator like so (passwordLength < 8 || passwordLength > 128). This created a return of true if the passwordLength failed project parameters which prompted the alert and the return escape from the function.
 
 ### Final assembly and deployment
 
