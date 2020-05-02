@@ -1,52 +1,78 @@
-// Assignment Code
+// Retrieve first element in document with id "generate" (index.html line 25)
 var generateBtn = document.querySelector("#generate");
+
+// Function to generate password from user selection criteria
+function generatePassword() {
+  // Create variable arrays for character bank
+  var specials = ["!", "@", "#", "$", "%", "^", "\&", "*", "\(", "\)"];
+  var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var lowers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var uppers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+  // Create variables for user responses
+  var passwordLength = parseInt(prompt("What length does the password need to be? It must be between 8 and 128 characters in length."));
+    // Verify password length within parameters
+    if (passwordLength < 9 || passwordLength > 128) {
+      // 
+      alert("It must be between 8 and 128 characters in length")
+      return
+    }
+  var wantsSpecials = confirm("Would you like to have special characters in your password?");
+  var wantsNumbers = confirm("Would you like to have numbers in your password?")
+  var wantsLowers = confirm("Would you like to have lowercase letters in your password?");
+  var wantsUppers = confirm("Would you like to have uppercase letters in your password?");
+
+  // Variable to contain array of selected character arrays
+  var possibles = [];
+
+  // Push selected arrays to possibles variable
+  if (wantsSpecials) {
+    possibles.push(specials);
+  }
+  if (wantsLowers) {
+    possibles.push(lowers);
+  }
+  if (wantsUppers) {
+    possibles.push(uppers);
+  }
+  if (wantsNumbers) {
+    possibles.push(numbers);
+  }
+
+  // Verify user has selected at least one array
+  if (!possibles.length) {
+    alert("You must select at least one character type. Please try again.");
+    return
+  }
+
+  // Variable for random password
+  var result = "";
+
+  // Function generatePassword to pass the password
+  console.log(possibles);
+  console.log(result);
+  for (var i = 0; i < passwordLength; i++) {
+    // Select random array from possible array
+    var randomArray = possibles[Math.floor(Math.random() * possibles.length)];
+    console.log(randomArray);
+    // Select random character from the randomly selected array
+    var randomChar = randomArray[Math.floor(Math.random() * randomArray.length)];
+    console.log(randomChar)
+    // Write (concatenate) the character to the end of the result variable
+    result += randomChar;
+    console.log(result);
+  }
+  return result
+}
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-function generatePassword {
-  var specials = ["!", "@", "#", "$", "%", "^", "\&", "*", "\(", "\)"];
-  var numbers = [0,1,2,3,4,5,6,7,8,9];
-  var lowers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  var uppers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-  var passwordLength = parseInt(prompt("What length does the password need to be?"));
-  var wantsSpecials = confirm("Would you like to have special characters in your password?");
-  var wantsLowers = confirm("Would you like to have lowercase letters in your password?");
-  var wantsUppers = confirm("Would you like to have uppercase letters in your password?");
-
-  var possibles = [];
-
-  if (wantsSpecials) {
-    possibles.push(specials);
+  if (password) {
+    passwordText.value = password;
   }
 
-  if (wantsLowers) {
-    possibles.push(lowers);
-  }
-
-  if (wantsUppers) {
-    possibles.push(uppers);
-  }
-
-  var result = "";
-
-  for (var i = 0; i < passwordLength; i++) {
-    // randomly pick an array from possibles
-    var randomArray = possibles[Math.floor(Math.random() * possibles.length)];
-    // randomly pick a character from the array we picked above
-    var randomChar = randomArray[Math.floor(Math.random() * randomArray.length)];
-    // add the character to the password
-    result += randomChar;
-  }
-  // Outputs resulting password to console
-  console.log(result);
 }
 
 // Add event listener to generate button
