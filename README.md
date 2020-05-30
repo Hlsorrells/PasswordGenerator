@@ -8,6 +8,8 @@
 
   [Password Generator](https://hlsorrells.github.io/PasswordGenerator/)
 
+  ![](passwordGenerator.gif)
+
 ## Table of Contents
 
   * [Assignment Instructions](#assignment-instructions)
